@@ -1,71 +1,42 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Link from "gatsby-link";
-import Helmet from "react-helmet";
-import "../styles/layout-overide.css";
+import { Link } from "gatsby"
+import PropTypes from "prop-types"
+import React from "react"
 
-
-
-const Header = () => (
-  <div
+const Header = ({ siteTitle }) => (
+  <header
     style={{
-      background: "#f5f5f5",
-      marginBottom: "3rem",
-      borderBottom: "2px solid #e6e6e6"
+      background: `rebeccapurple`,
+      marginBottom: `1.45rem`,
     }}
   >
     <div
       style={{
-        margin: "0 auto",
-        maxWidth: 980,
-        padding: "1.45rem 1.0875rem"
+        margin: `0 auto`,
+        maxWidth: 960,
+        padding: `1.45rem 1.0875rem`,
       }}
     >
-      <h1 style={{ margin: 0, textAlign: "center", fontSize: "18px" }}>
+      <h1 style={{ margin: 0 }}>
         <Link
           to="/"
           style={{
-            color: "black",
-            textDecoration: "none"
+            color: `white`,
+            textDecoration: `none`,
           }}
         >
-          CodeStack
+          {siteTitle}
         </Link>
       </h1>
     </div>
-  </div>
-);
+  </header>
+)
 
+Header.propTypes = {
+  siteTitle: PropTypes.string,
+}
 
+Header.defaultProps = {
+  siteTitle: ``,
+}
 
-
-const TemplateWrapper = ({ children }) => (
-  <div>
-    <Helmet
-      title="Gatsby Default Starter"
-      meta={[
-        { name: "description", content: "Sample" },
-        { name: "keywords", content: "sample, something" }
-      ]}
-    />
-    <Header />
-    <div
-      style={{
-        margin: "0 auto",
-        maxWidth: 980,
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        height: "100%"
-      }}
-    >
-    
-    </div>
-  </div>
-);
-
-TemplateWrapper.propTypes = {
-  children: PropTypes.func
-};
-
-export default TemplateWrapper;
+export default Header
